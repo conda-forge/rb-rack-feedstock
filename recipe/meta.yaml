@@ -1,5 +1,5 @@
 {% set name = "rack" %}
-{% set version = "3.1.4" %}
+{% set version = "3.1.5" %}
 
 package:
   name: rb-{{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem
-    sha256: 0d5719cc5c36e92a1ad077406734246052c65494db3d69ba8ac49fad1b260a3b
+    sha256: 8c1a8ffeb16add02b9e7f466d4a860f2932620705f74e603a13400642c82e869
 
 build:
   noarch: generic
