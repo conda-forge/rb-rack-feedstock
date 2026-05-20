@@ -1,0 +1,44 @@
+schema_version: 1
+
+context:
+  name: rack
+  version: 3.1.8
+
+package:
+  name: rb-${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  - url: https://rubygems.org/downloads/${{ name }}-${{ version }}.gem
+    sha256: d3fbcbca43dc2b43c9c6d7dfbac01667ae58643c42cea10013d0da970218a1b1
+
+build:
+  number: 1
+  noarch: generic
+  script:
+    - gem install -N -l -V --norc --ignore-dependencies ${{ name }}-${{ version }}.gem
+    - gem unpack ${{ name }}-${{ version }}.gem
+    - cp ${{ name }}-*/MIT-LICENSE .
+
+requirements:
+  host:
+    - ruby >=2.7,<3
+  run:
+    - ruby >=2.7,<3
+
+tests:
+  - script:
+      - ruby -r ${{ name }} -e 'exit 0'
+
+about:
+  license: MIT
+  license_file: MIT-LICENSE
+  summary: A modular Ruby web server interface
+  homepage: https://rubygems.org/gems/${{ name }}
+  repository: https://github.com/rack/${{ name }}
+  documentation: https://www.rubydoc.info/gems/${{ name }}
+
+extra:
+  recipe-maintainers:
+    - svengiegerich
+    - janjagusch
